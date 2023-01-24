@@ -130,3 +130,40 @@ DEFAULT_USER = prompt_context() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# 更新所有子模块（更新到追踪分支的最新 commit）
+function update-submodules() {
+    git submodule update --init --recursive
+    git submodule foreach --recursive -q '
+        branch="$(git config -f $toplevel/.gitmodules submodule.$name.branch)"
+        echo -------- $name: $branch
+        if [[ $branch ]]; then
+            git reset --hard
+            git pull 2> /dev/null
+            if [[ $? -ne 0 ]]; then
+                git switch master
+                git pull
+            fi
+            git switch $branch
+            git pull
+        fi
+    '
+}
+
+# 检查当前迭代分支中哪个子模块已更新（需要更新上游的子模块）
+function which-submodule-changed() {
+    git submodule foreach -q '
+        project_branch="`git -C $toplevel branch --show-current`"
+        branch="$(git config -f $toplevel/.gitmodules submodule.$name.branch)"
+        if [[ $branch == $project_branch ]];
+            then echo $name;
+        fi
+    '
+}
+
+# 查看某个分支中的子模块追踪分支，例如：
+# tracking-branch feature/R630 postman-runtime
+function tracking-branch() {
+    git config --blob $1:.gitmodules submodule.$2.branch
+}
+
