@@ -1,0 +1,26 @@
+# personal
+Host github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_personal
+
+# company
+Host e.coding.net  # 这个名字可任意设置
+HostName e.coding.net
+User git
+IdentityFile ~/.ssh/id_rsa_company
+
+# d1
+Host 192.168.10.207  # 这个名字可任意设置
+HostName 192.168.10.207 
+User root
+IdentityFile ~/.ssh/id_rsa_personal
+
+# d2
+Host 192.168.10.208  # 这个名字可任意设置
+HostName 192.168.10.208 
+User root
+IdentityFile ~/.ssh/id_rsa_personal
+
+# RequestTTY yes # ensure that we attach our terminal input
+# RemoteCommand tmux attach # attach to the tmux session
