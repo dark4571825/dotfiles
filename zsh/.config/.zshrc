@@ -167,3 +167,9 @@ function tracking-branch() {
     git config --blob $1:.gitmodules submodule.$2.branch
 }
 
+function note {
+  echo "date: $(date)" >> $HOME/drafts.txt
+  echo "$@" >> $HOME/drafts.txt
+  echo "" >> $HOME/drafts.txt
+}
+
