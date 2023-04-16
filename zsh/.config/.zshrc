@@ -173,3 +173,14 @@ function note {
   echo "" >> $HOME/drafts.txt
 }
 
+# git push --force-with-lease
+
+function checkport() {
+  lsof -t -i:$argv[1]
+}
+
+function killport(){
+  kill -9 $(checkport $argv[1])
+}
+
+alias killnode="killall -9 node"
