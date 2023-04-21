@@ -1,7 +1,7 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup {
   -- maintained has been deprecated
-  ensure_installed = { "javascript", "typescript", "tsx", "vue", "css", "html", "scss", "vim" },
+  ensure_installed = { "c", "cpp", "go", "lua", "rust", "python", "javascript", "typescript", "tsx", "vue", "css", "html", "scss", "help", "vim" },
 
   sync_install = false,
 
@@ -17,7 +17,7 @@ configs.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = { enable = true, disable = { "yaml", "python" } },
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
