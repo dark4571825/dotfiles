@@ -163,6 +163,13 @@ return require("lazy").setup({
     end,
     dependencies = { "nvim-treesitter/nvim-treesitter", "hrsh7th/nvim-cmp" }
   },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function ()
+      require("nvim-ts-autotag").setup()
+    end
+  },
   { 'akinsho/bufferline.nvim',
     version = "v3.*",
     dependencies = 'nvim-tree/nvim-web-devicons',

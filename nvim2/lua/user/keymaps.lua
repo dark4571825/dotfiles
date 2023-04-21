@@ -10,6 +10,12 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 
+-- Resize window using <ctrl> arrow keys
+keymap("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+keymap("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
 vim.keymap.set("n", "<C-a>", "gg<S-v>G", opts)
 
 vim.keymap.set("i", "jk", "<ESC>", opts)

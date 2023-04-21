@@ -7,7 +7,7 @@
 -- if not config_status_ok then
 --   return
 -- end
-
+local icons = require("user.icons")
 local M = {}
 
 local function telescope_find_files(_)
@@ -61,8 +61,10 @@ M.config = {
       enable = false,
       auto_open = true
     },
+    prefer_startup_root = false,
     -- project.nvim 需要 sync_root_with_cwd & respect_buf_cwd
-    -- sync_root_with_cwd = true,
+    sync_root_with_cwd = true,
+    -- reload_on_bufenter = false,
     -- respect_buf_cwd = true,
     update_focused_file = {
       enable = true,
