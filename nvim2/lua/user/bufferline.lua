@@ -102,6 +102,12 @@ function M.setup()
           padding = 1,
         },
         {
+          filetype = "neo-tree",
+          text = "Explorer",
+          -- highlight = "PanelHeading",
+          padding = 1,
+        },
+        {
           filetype = "DiffviewFiles",
           text = "Diff View",
           -- highlight = "PanelHeading",

@@ -56,6 +56,8 @@ keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
+keymap("n", "<F9>", ":Neotree position=left source=filesystem action=show toggle=true<CR>", opts)
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })

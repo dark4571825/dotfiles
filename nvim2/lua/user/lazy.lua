@@ -27,7 +27,7 @@ return require("lazy").setup({
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
     config = function()
-      require("user.nvim-tree").setup()
+      -- require("user.nvim-tree").setup()
     end,
     tag = 'nightly', -- optional, updated every week. (see issue #1193)
     cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFocus", "NvimTreeFindFileToggle" },
@@ -87,7 +87,7 @@ return require("lazy").setup({
     --     changedelete = { text = '~' },
     --   },
     -- },
-    config = function ()
+    config = function()
       require("user.gitsigns").setup()
     end,
     -- event = "User FileOpened",
@@ -166,14 +166,14 @@ return require("lazy").setup({
   {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
-    config = function ()
+    config = function()
       require("nvim-ts-autotag").setup()
     end
   },
   { 'akinsho/bufferline.nvim',
     version = "v3.*",
     dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function ()
+    config = function()
       require("user.bufferline").setup()
     end
   },
@@ -182,4 +182,38 @@ return require("lazy").setup({
     "nvim-tree/nvim-web-devicons",
     lazy = true,
   },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
+    dependencies = "MunifTanjim/nui.nvim",
+    init = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+      if vim.fn.argc() == 1 then
+        local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          -- require("neo-tree")
+          require("user.neo-tree").setup()
+        end
+      end
+    end,
+    opts = {
+      filesystem = {
+        bind_to_cwd = false,
+        follow_current_file = true,
+      },
+      window = {
+        mappings = {
+          ["<space>"] = "none",
+        },
+      },
+      default_component_configs = {
+        indent = {
+          with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+          expander_collapsed = "",
+          expander_expanded = "",
+          expander_highlight = "NeoTreeExpander",
+        },
+      },
+    },
+  }
 })
