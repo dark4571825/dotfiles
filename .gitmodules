@@ -13,6 +13,3 @@
 [submodule "zsh/.zsh/plugins/zsh-vi-mode"]
 	path = zsh/.zsh/plugins/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode.git
-[submodule "tmux"]
-	path = tmux
-	url = https://github.com/gpakosz/.tmux.git
