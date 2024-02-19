@@ -447,7 +447,7 @@ set -g @continuum-restore 'on'
 # # /!\ do not remove the previous line
 
 # Display lazygit
-bind -r g display-popup -d '#{pane_current_path}' -w80% -h80% -E lazygit
+bind -r C-g display-popup -d '#{pane_current_path}' -w80% -h80% -E lazygit
 
 # set-option -g repeat-time 0
 # set-option -g mouse on
@@ -455,3 +455,4 @@ bind -r C-k send-keys C-l \; send-keys -R \; clear-history
 
 bind M command-prompt "splitw -h 'exec man %%'"
 
+set -sg repeat-time 300                   # increase repeat timeout
