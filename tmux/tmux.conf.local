@@ -414,6 +414,9 @@ tmux_conf_uninstall_plugins_on_reload=true
 # visit https://github.com/tmux-plugins for available plugins
 #set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-cpu'
+# tmux new -s 0
+# tmux will automatically kill 0 session after restore.
+# https://github.com/tmux-plugins/tmux-resurrect/issues/101#issuecomment-667845397
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-restore 'on'
